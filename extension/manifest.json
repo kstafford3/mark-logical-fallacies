@@ -1,0 +1,41 @@
+{
+    "manifest_version": 2,
+    
+    "name": "Annotations",
+    "description": "Annotate pages",
+    "version": "0.0.1",
+    
+    "permissions": [
+        "tabs",
+        "contextMenus",
+        "http://localhost/"
+    ],
+    
+    "browser_action": {
+        "default_icon": "icon-19.png",
+        "default_popup": "popup.html"
+    },
+    
+    "icons": {
+        "16": "icon-16.png",
+        "19": "icon-19.png",
+        "32": "icon-32.png",
+        "64": "icon-64.png"
+    },
+    
+    "background": {
+        "scripts": [ "lib/js/jquery-2.2.0.min.js", "constants.js", "create_annotations.js" ]
+    },
+    
+    "content_scripts": [
+        {
+            "matches": [ "http://*/*" ],
+            "js": [ "lib/js/jquery-2.2.0.min.js", "constants.js", "show_annotations.js", "capture_selection.js" ],
+            "css": [ "style.css" ]
+        }
+    ],
+    
+    "web_accessible_resources": [
+        "lib/fonts/*"
+    ]
+}
